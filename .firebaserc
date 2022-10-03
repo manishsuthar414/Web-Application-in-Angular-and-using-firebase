@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "webapp-3dd28": {
+      "hosting": {
+        "Web4": [
+          "webapp-3dd28"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "webapp-3dd28"
+  }
+}

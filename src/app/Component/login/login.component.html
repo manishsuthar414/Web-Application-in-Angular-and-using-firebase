@@ -1,0 +1,14 @@
+<p>login works!</p>
+<div class="form-container mat-elevation-z5">
+    <h1>Login</h1>
+    <mat-form-field class="formGroup">    
+      <input matInput placeholder="email" #userName required/>
+    </mat-form-field>
+    <mat-form-field class="formGroup">
+      <input matInput type="password" placeholder="Password" #userPassword required/>
+    </mat-form-field>
+    <div class="formGroup" class="center margin-top">
+      <button type="submit" mat-raised-button color="primary" (click)="authService.SignIn(userName.value, userPassword.value)" >Login</button>
+    </div>
+    <span class="center margin-top">New to our platform? <a class="sign-up-link" routerLink="/signup">Sign Up!</a></span>
+  </div>

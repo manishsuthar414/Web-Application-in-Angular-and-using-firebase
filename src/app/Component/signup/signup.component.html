@@ -1,0 +1,26 @@
+<p>signup works!</p>
+<div class="form-container mat-elevation-z5">
+    <h1>SignUp</h1>
+    <!-- <mat-form-field> 
+      <input matInput type="Name" placeholder="lastName " #userlastName
+      required />
+    </mat-form-field> -->
+    <mat-form-field>
+      <input matInput placeholder="Name " #userdisplayName required />
+    </mat-form-field> 
+    <!-- <mat-form-field> 
+      <input type="number" matInput placeholder="phoneNumber" #userphoneNumber/>
+    </mat-form-field> -->
+    <mat-form-field>
+      <input matInput placeholder="email " #userEmail required />
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="password" placeholder="Password" #userPwd required />
+    </mat-form-field>
+    <div class="center margin-top">
+      <!-- //Submit Button -->
+     <button type="submit" mat-raised-button color="primary"
+        >Sign Up</button>
+    </div>
+    <span class="center margin-top">New to our platform? <a class="sign-up-link" routerLink="/login">Login!</a></span> 
+  </div>
