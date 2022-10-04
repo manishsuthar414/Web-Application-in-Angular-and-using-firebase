@@ -1,1 +1,69 @@
-<p>dash works!</p>
+<!-- <p>dash works!</p> -->
+<mat-toolbar color="primary">
+    Angular Page
+    <ng-container *ngIf="auth.userData as user" >
+      <button mat-button [matMenuTriggerFor]="userMenu">
+        <img
+          width="30"
+          height="30"
+          class="profile-image-toolbar"
+        />
+        {{user.displayName }}
+        <mat-icon>expand_more</mat-icon>
+      </button>
+    </ng-container>
+    <ng-template #loginButton>
+      <button mat-button routerLink="login">
+        <mat-icon>login</mat-icon>
+        Login
+      </button>
+    </ng-template>
+  </mat-toolbar>
+  
+  <!-- <div class="content">
+    <router-outlet></router-outlet>
+  </div> -->
+  
+  <mat-menu #userMenu="matMenu">
+    
+    <!-- <button mat-menu-item routerLink="/Dash">
+      <mat-icon>account_circle</mat-icon>
+      Dash
+    </button> -->
+    <button mat-menu-item routerLink="/product">
+      <mat-icon>home</mat-icon>
+      Home
+    </button>
+    <button mat-menu-item routerLink="/login" (click)="auth.SignOut()">
+      <mat-icon>account_circle</mat-icon>
+      SignOut
+    </button>
+    
+    <!-- <button mat-menu-item routerLink="/sign-up">
+      <mat-icon>SignUp</mat-icon>
+      SignUp
+    </button> -->
+    
+  </mat-menu>
+
+
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+    <div class="inner-adjust">
+      <div class="pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">User Profile</h1>
+      </div>
+      <!-- Show user data when logged in -->
+      <div class="row" *ngIf="auth.userData as user">
+        <div class="col-md-12">
+          <div class="media">
+            <div class="media-body">
+              <h1>Hello: <strong>{{user.displayName}}</strong></h1>
+              <!-- <h1>Hello: <strong>{{user.LastName}}</strong></h1> -->
+              <p>User ID: <strong>{{user.uid}}</strong></p>
+              <p>Email: <strong>{{user.email}}</strong></p> 
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>

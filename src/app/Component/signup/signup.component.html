@@ -20,7 +20,7 @@
     <div class="center margin-top">
       <!-- //Submit Button -->
      <button type="submit" mat-raised-button color="primary"
-        >Sign Up</button>
+     (click)="authService.SignUp(userEmail.value, userPwd.value, userdisplayName.value)"  >Sign Up</button>
     </div>
     <span class="center margin-top">New to our platform? <a class="sign-up-link" routerLink="/login">Login!</a></span> 
   </div>
