@@ -1,1 +1,60 @@
-<p>product works!</p>
+<!-- <p>dash works!</p> -->
+<mat-toolbar color="primary">
+    Angular Page
+    <ng-container *ngIf="auth.userData as user" >
+      <mat-icon matBadge="" (click)="CartBtn()">add_shopping_cart</mat-icon>  
+      <button mat-button [matMenuTriggerFor]="userMenu">
+        <img
+          width="30"
+          height="30"
+          class="profile-image-toolbar"
+        /> 
+        {{user.displayName }}
+        <mat-icon>expand_more</mat-icon>
+      </button>
+    </ng-container>
+    <ng-template #loginButton>
+      <button mat-button routerLink="login">
+        <mat-icon>login</mat-icon>
+        Login
+      </button>
+    </ng-template>
+  </mat-toolbar>
+  
+  <mat-menu #userMenu="matMenu">
+    
+    <!-- <button mat-menu-item routerLink="/Dash">
+      <mat-icon>account_circle</mat-icon>
+      Dash
+    </button> -->
+    <button mat-menu-item routerLink="/dash">
+        <mat-icon>account_circle</mat-icon>
+        Profile
+    </button>
+    <button mat-menu-item routerLink="/login" (click)="auth.SignOut()">
+      <mat-icon>logout</mat-icon>
+      SignOut
+    </button>
+    
+    <!-- <button mat-menu-item routerLink="/sign-up">
+      <mat-icon>SignUp</mat-icon>
+      SignUp
+    </button> -->
+    
+  </mat-menu>
+
+          <div class="card-container">
+
+        <div class="card-container">
+            
+          <mat-card class="card" *ngFor="let product of products; index as i">
+            <mat-card-title>{{product.name}}</mat-card-title>
+            <img mat-card-image [src]="product.imgUrl" height="200px" alt="Product img"> 
+            <mat-card-subtitle>Price: {{ product.price}}</mat-card-subtitle>
+            <button class="btn btn-primary" (click)="addToCart(i)" *ngIf="add !== i">Add to Cart</button>
+            <div *ngIf="add === i">
+              <input type="number" class="form-control" name="qte" placeholder="Amount (Kg)" #amount><br>
+              <button class="btn btn-primary" (click)="buy(amount.value)">Buy</button>
+            </div>
+          </mat-card>
+         </div>

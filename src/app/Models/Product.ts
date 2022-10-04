@@ -1,5 +1,5 @@
 export class Product {
-    id?: string
+    id: any
     name?: string
     price?: number
     imgUrl?: string

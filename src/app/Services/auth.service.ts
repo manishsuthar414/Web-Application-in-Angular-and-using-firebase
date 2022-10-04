@@ -1,4 +1,4 @@
-import { Injectable, NgZone, resolveForwardRef } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import {
@@ -6,18 +6,17 @@ import {
   AngularFirestoreDocument,
 } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
-import { ProfileUser, User } from '../Models/user';
-import { collection } from 'firebase/firestore';
+import { User } from '../Models/user';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-
+import { Firestore } from '@angular/fire/firestore/firebase';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  user!: Observable<any>;
-  userId: string | undefined;
+  user!: Observable<Firestore>;
+  userid: any
 
 //   // SaveUser(product: any){
 //   //   return this.http.post<any>('https://webapp-3dd28-default-rtdb.firebaseio.com/product.json',product)
@@ -34,6 +33,9 @@ export class AuthService {
     public ngZone: NgZone ,// NgZone service to remove outside scope warning
     public http:HttpClient
   ) {
+
+    this.userid = this.afAuth.user
+
     /* Saving user data in localstorage when 
     logged in and setting up null when logged out */
     this.afAuth.authState.subscribe((user) => {
@@ -63,32 +65,32 @@ export class AuthService {
   }
 //   // Sign up with email/password
 
-//   SignUp(email:string,password:string ,displayName:string) {
+  SignUp(email:string,password:string ,displayName:string) {
    
-//     return this.afAuth
-//       .createUserWithEmailAndPassword(email, password)
-//       .then((result) => {
-//         result.user?.updateProfile({
-//           displayName: displayName,
+    return this.afAuth
+      .createUserWithEmailAndPassword(email, password)
+      .then((result) => {
+        result.user?.updateProfile({
+          displayName: displayName,
           
-//           // lastName: lastName,
+          // lastName: lastName,
         
-//         }).then(()=>{
-//           this.SetUserData(result.user);
-//           result.user?.metadata
-//         })
-//         /* Call the SendVerificaitonMail() function when new user sign 
-//         up and returns promise */
-//         // this.SendVerificationMail();
-//         // this.SetUserData(result.user);
-//         console.log(result.user)
-//         console.log(this.SetUserData(result.user))
-//         alert("Success")
-//       })
-//       .catch((error) => {
-//         alert(error.message);
-//       });
-//   }
+        }).then(()=>{
+          this.SetUserData(result.user);
+          result.user?.metadata
+        })
+        /* Call the SendVerificaitonMail() function when new user sign 
+        up and returns promise */
+        // this.SendVerificationMail();
+        // this.SetUserData(result.user);
+        console.log(result.user)
+        console.log(this.SetUserData(result.user))
+        alert("Success")
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
+  }
 
 //   // Reset Forggot password
 //   // ForgotPassword(passwordResetEmail: string) {
@@ -149,13 +151,13 @@ export class AuthService {
     );
     
   }
-//   // Sign out
-//   SignOut() {
-//     return this.afAuth.signOut().then(() => {
-//       localStorage.removeItem('user');
-//       this.router.navigate(['login']);
-//     });
-//   }
+  // Sign out
+  SignOut() {
+    return this.afAuth.signOut().then(() => {
+      localStorage.removeItem('user');
+      this.router.navigate(['login']);
+    });
+  }
 // }
 
 
