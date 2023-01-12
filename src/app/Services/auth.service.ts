@@ -1,22 +1,19 @@
 import { Injectable, NgZone } from '@angular/core';
-
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import {
-  AngularFirestore,
-  AngularFirestoreDocument,
-} from '@angular/fire/compat/firestore';
+import {AngularFirestore, AngularFirestoreDocument,} from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import { User } from '../Models/user';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Firestore } from '@angular/fire/firestore/firebase';
+import { Auth } from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   user!: Observable<Firestore>;
-  userid: any
+  userid: any;
 
 //   // SaveUser(product: any){
 //   //   return this.http.post<any>('https://webapp-3dd28-default-rtdb.firebaseio.com/product.json',product)
@@ -30,11 +27,12 @@ export class AuthService {
     public afs: AngularFirestore, // Inject Firestore service
     public afAuth: AngularFireAuth, // Inject Firebase auth service
     public router: Router,
-    public ngZone: NgZone ,// NgZone service to remove outside scope warning
-    public http:HttpClient
+    public ngZone: NgZone ,   // NgZone service to remove outside scope warning
+    public http:HttpClient,
+    public auth:Auth
   ) {
 
-    this.userid = this.afAuth.user
+    this.userid = this.auth
 
     /* Saving user data in localstorage when 
     logged in and setting up null when logged out */
@@ -72,9 +70,7 @@ export class AuthService {
       .then((result) => {
         result.user?.updateProfile({
           displayName: displayName,
-          
           // lastName: lastName,
-        
         }).then(()=>{
           this.SetUserData(result.user);
           result.user?.metadata

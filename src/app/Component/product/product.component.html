@@ -2,7 +2,7 @@
 <mat-toolbar color="primary">
     Angular Page
     <ng-container *ngIf="auth.userData as user" >
-      <mat-icon matBadge="" (click)="CartBtn()">add_shopping_cart</mat-icon>  
+      <mat-icon *ngFor="let product of cart;" matBadge="{{product.amount}}" matBadgeColor="warn" (click)="CartBtn()">add_shopping_cart</mat-icon>  
       <button mat-button [matMenuTriggerFor]="userMenu">
         <img
           width="30"
@@ -50,11 +50,20 @@
           <mat-card class="card" *ngFor="let product of products; index as i">
             <mat-card-title>{{product.name}}</mat-card-title>
             <img mat-card-image [src]="product.imgUrl" height="200px" alt="Product img"> 
-            <mat-card-subtitle>Price: {{ product.price}}</mat-card-subtitle>
-            <button class="btn btn-primary" (click)="addToCart(i)" *ngIf="add !== i">Add to Cart</button>
+            <mat-card-title>Price: {{ product.price}}</mat-card-title>
+            <mat-card-subtitle>{{product.subtitle}}</mat-card-subtitle>
+            <button class="p-2 btn btn-primary" (click)="addToCart(i)" *ngIf="add !== i">Add to Cart</button>
             <div *ngIf="add === i">
-              <input type="number" class="form-control" name="qte" placeholder="Amount (Kg)" #amount><br>
-              <button class="btn btn-primary" (click)="buy(amount.value)">Buy</button>
+
+              <div class="wrapper">
+                <button class="minus" (click)="handleMinus()">-</button>
+                <input type="number" class="form-control" value="1" [(ngModel)]="value" #amount/>
+                <button class="plus" (click)="handlePlus()">+</button>
+              </div>
+
+
+              <!-- <input type="number" class="form-control" name="qte" placeholder="Amount (Kg)" #amount><br> -->
+              <button class="p-2 btn btn-primary" (click)="buy(amount.value)">Buy</button>
             </div>
           </mat-card>
          </div>

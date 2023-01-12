@@ -14,9 +14,9 @@ body {
 
 .form-container {
   display: block;
-  max-width: 300px;
+  max-width: 390px;
   margin: auto;
-
+  margin-top: 5rem;
   background: #eceff1;
   padding: 48px;
   border-radius: 16px;

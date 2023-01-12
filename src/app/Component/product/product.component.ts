@@ -8,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/Services/cart.service';
 import { OnDestroy } from '@angular/core';
+import { Shopping } from 'src/app/Models/Shopping';
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
@@ -19,16 +20,17 @@ export class ProductComponent implements OnInit, OnDestroy{
   products: Array<Product> = []
   productObservable!: Subscription;
   add: number = -1 // for view qte & buy button
-
+  
   constructor(
     public auth: AuthService,
     public productsService:ProductService,
     private router:Router,
     private cartSer:CartService
-  ) { 
-
-  }
-  
+    ) { 
+      
+    }
+    
+    cart!: Array<Shopping>;
   
   datalist: any[] | undefined;
   ngOnInit(): void {
@@ -39,28 +41,26 @@ export class ProductComponent implements OnInit, OnDestroy{
           id: element.payload.doc.id,
           name: element.payload.doc.data()['name'], // or: ...element.payload.doc.data()
           price: element.payload.doc.data()['price'],
-          imgUrl: element.payload.doc.data()['imgUrl']
+          imgUrl: element.payload.doc.data()['imgUrl'],
+          subtitle: element.payload.doc.data()['subtitle']
         }
       })
     })
     
-    // this.http.get<any>('https://webapp-3dd28-default-rtdb.firebaseio.com/product.json')
-    // .pipe(map(resData => {
-    //   // console.log(resData);
-    //   const userArray = [];
-    //   for (const key in resData) {
-    //     console.log(key)
-    //     userArray.push({ userId: key, ...resData[key] })
-    //   }
-    //   return userArray
-    // }))
-    // .subscribe(
-    //   users => {
-    //     // console.log(users);
-    //     this.datalist = users
-
-    //     })
-
+    this.cartSer.getCart().subscribe(cart => {
+      this.cart = cart.map((shopping:any) => {
+        return {
+          id: shopping.payload.doc.id,
+          amount: shopping.payload.doc.data()['amount'],
+          name: shopping.payload.doc.data()['name'],
+          price: shopping.payload.doc.data()['price'],
+          // imgUrl:shopping.payload.doc.data()['imgUrl']
+        }
+      })
+      console.log(this.cart)
+    }, err => {
+      console.log('err (loading cart)', err.message)
+    })
   }
 
   ngOnDestroy() {
@@ -72,10 +72,12 @@ export class ProductComponent implements OnInit, OnDestroy{
       name: selectedProduct.name,
       amount: +amount,
       price: selectedProduct.price,
+
     }
     this.cartSer.addToCart(data)
     .then(result => this.add = -1)
     .catch(err => console.log('err', err))
+    // this.router.navigate(['/cart'])
   }
 
    
@@ -93,6 +95,20 @@ export class ProductComponent implements OnInit, OnDestroy{
     CartBtn(){
       this.router.navigate(['/cart'])
     }
+
+    value = 1;
+
+  handleMinus() {
+      if(this.value=1){
+        this.value-1
+      }
+    // this.value--;  
+  }
+  handlePlus() {
+    this.value++;    
+  }
+
+  
   }
 function ngOnDestroy() {
   throw new Error('Function not implemented.');

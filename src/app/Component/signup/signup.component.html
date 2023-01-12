@@ -1,4 +1,4 @@
-<p>signup works!</p>
+<!-- <p>signup works!</p> -->
 <div class="form-container mat-elevation-z5">
     <h1>SignUp</h1>
     <!-- <mat-form-field> 
@@ -12,7 +12,7 @@
       <input type="number" matInput placeholder="phoneNumber" #userphoneNumber/>
     </mat-form-field> -->
     <mat-form-field>
-      <input matInput placeholder="email " #userEmail required />
+      <input matInput placeholder="email " pattern="/^[^ ]+@[^ ]+\.[a-z]{2,3}$/"  #userEmail required />
     </mat-form-field>
     <mat-form-field>
       <input matInput type="password" placeholder="Password" #userPwd required />

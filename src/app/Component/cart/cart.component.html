@@ -1,4 +1,4 @@
-<p>cart works!</p>
+<!-- <p>cart works!</p> -->
 <h2>Cart</h2>
 <table class="table">
     <thead>
@@ -19,8 +19,9 @@
         </td>
         <td>{{ (product.amount * product.price) }}</td>
         <td>
-            <button class="btn btn-warning" (click)="save(i)">Save</button>
+            <button class="m-2 btn btn-warning" (click)="save(i)">Save</button>
             <button class="btn btn-danger" (click)="delete(i)">Delete</button>
+            <!-- <button class="m-2 btn" >Check</button> -->
         </td>
       </tr>
     </tbody>

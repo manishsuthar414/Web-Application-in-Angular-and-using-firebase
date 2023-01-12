@@ -35,7 +35,6 @@ import { provideRemoteConfig,getRemoteConfig } from '@angular/fire/remote-config
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import {MatBadgeModule} from '@angular/material/badge';
 
-
 @NgModule({
   declarations: [
     AppComponent,

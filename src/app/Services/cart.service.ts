@@ -9,6 +9,7 @@ import { Route, Router } from '@angular/router';
 export class CartService {
 
   constructor(public firestore: AngularFirestore, private authSer: AuthService, private router:Router) { }
+  
   addToCart(cart: any) {
     return this.firestore.collection(`products/${this.authSer.userid}/cart`).add(cart)
   }
@@ -16,7 +17,7 @@ export class CartService {
   getCart() {
     return this.firestore.collection(`products/${this.authSer.userid}/cart`).snapshotChanges()
   }
-
+  
   updateAmount(id: any, amount: any) {
     return this.firestore.doc(`products/${this.authSer.userid}/cart/${id}`).update({amount})
   }

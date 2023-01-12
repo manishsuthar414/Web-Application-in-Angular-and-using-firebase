@@ -7,35 +7,33 @@ import { HomeComponent } from './Component/home/home.component';
 import { LoginComponent } from './Component/login/login.component';
 import { ProductComponent } from './Component/product/product.component';
 import { SignupComponent } from './Component/signup/signup.component';
+import { AuthGuardService } from './Services/auth-guard/auth-guard.service';
 
 const routes: Routes = [
 
   {
     path:'login',
-    component: LoginComponent,
-    // ...canActivate(redirectLoggedInToHome),
+    component: LoginComponent
   },
   {
     path: 'home',
-    component: HomeComponent,
-    // ...canActivate(redirectUnauthorizedToLogin),
+    component: HomeComponent
   },
   {
     path:'dash',
-    component:DashComponent,
-    // ...canActivate(redirectUnauthorizedToLogin),
+    component:DashComponent, canActivate: [AuthGuardService]
   },
   {
     path:'product',
-    component:ProductComponent
+    component:ProductComponent, canActivate: [AuthGuardService]
   },
   {
     path:'cart',
-    component:CartComponent
+    component:CartComponent, canActivate: [AuthGuardService]
   },
   {
     path:'admin',
-    component:AdminComponent
+    component:AdminComponent, canActivate: [AuthGuardService]
   },
   {
     path:'signup',
@@ -48,3 +46,7 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+function canActivate(redirectLoggedInToHome: any): import("@angular/router").Route {
+  throw new Error('Function not implemented.');
+}
+

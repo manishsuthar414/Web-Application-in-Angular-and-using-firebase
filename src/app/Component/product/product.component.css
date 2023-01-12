@@ -8,6 +8,10 @@ mat-toolbar {
     justify-content: space-between;
   }
   
+  .mat-menu-item[_ngcontent-ggc-c117]{
+    font-size: 17px;
+    font-weight: 443;
+  }
   .content {
     padding: 32px;
   }
@@ -29,13 +33,70 @@ mat-toolbar {
   .card-container{
     display: grid;
     /* padding: 1rem; */
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-auto-rows: auto;
     /* grid-gap: 1rem; */
   }
   .material-icons{
     cursor: pointer;
-    position: absolute;
-    margin-left: 81rem;
+    position: initial;
+    margin-left: 3px;
 
+}
+input {
+  text-align: center;  
+  border: 1px solid #6C757D;
+} 
+
+input[type="number"] {
+  -webkit-appearance: textfield !important;
+  -moz-appearance: textfield !important;
+  appearance: textfield !important;
+  }
+/* 
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none; 
+  } */
+
+.wrapper {
+  /* border: 2px #dcd3d3 solid; */
+  width: 7vw;
+  height: 50px;
+  padding: 10px;
+  display: flex;
+  border-radius: 15px;
+}
+
+.minus {
+  height: 94%;
+  width: 24%;
+  background: white;
+  border: none;
+  font-size: 47px;
+  margin-top: -1px;
+  color: #5f5fce;
+}
+.plus{
+  height: 102%;
+  width: 12%;
+  background: white;
+  border: none;
+  font-size: 30px;
+  margin-top: -1px;
+  color: #5f5fce;
+}
+.num {
+  height: 100%;
+  width: 39%;
+  border: none;
+  font-size: 30px;
+}
+.form-control{
+  margin: 4px;
+    margin-right: 5px;
+}
+.badge{
+  margin-left: 71rem;
+  position: relative;
 }

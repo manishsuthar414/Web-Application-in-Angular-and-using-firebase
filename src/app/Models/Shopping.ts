@@ -4,4 +4,4 @@ export interface Shopping {
     amount: any,
     name: string,
     price: number
-}
+} 

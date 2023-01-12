@@ -22,9 +22,11 @@ export class AdminComponent implements OnInit {
   addNewProduct(form: NgForm){
     let name = form.value.name,
       price = form.value.price,
-      img = (this.image.nativeElement).files[0];
+      subtitle = form.value.subtitle,
+      imgUrl = form.value.imgUrl
+      // img = (this.image.nativeElement).files[0];
 
-    this.productSer.addNewProduct(name, price, img)
+    this.productSer.addNewProduct(name, price, subtitle,imgUrl)
     .then(msg => console.log(msg))
     .catch(err => console.log(err))
     console.log((this.image.nativeElement).files[0])

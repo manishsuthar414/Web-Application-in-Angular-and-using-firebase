@@ -1,12 +1,12 @@
 export interface ProfileUser {
     uid: string;
-    email?: string;
-    firstName?: string;
+    email: string;
+    firstName: string;
     lastName: string;
-    displayName?: string;
-    phoneNumber?: string;
-    address?: string;
-    photoURL?: string;
+    displayName: string;
+    phoneNumber: string;
+    address: string;
+    photoURL: string;
 }  
 export interface User {
     uid: string;
@@ -16,4 +16,4 @@ export interface User {
     phoneNumber: number;
     // lastName: string;
     // emailVerified: boolean;
- }
+ } 
