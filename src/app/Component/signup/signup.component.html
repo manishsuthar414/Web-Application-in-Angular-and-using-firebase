@@ -12,7 +12,7 @@
       <input type="number" matInput placeholder="phoneNumber" #userphoneNumber/>
     </mat-form-field> -->
     <mat-form-field>
-      <input matInput placeholder="email " pattern="/^[^ ]+@[^ ]+\.[a-z]{2,3}$/"  #userEmail required />
+      <input matInput placeholder="email " pattern="/^[^ ]+@[^ ]+\.[a-z]{2,3}$/" #userEmail required />
     </mat-form-field>
     <mat-form-field>
       <input matInput type="password" placeholder="Password" #userPwd required />
@@ -20,7 +20,7 @@
     <div class="center margin-top">
       <!-- //Submit Button -->
      <button type="submit" mat-raised-button color="primary"
-     (click)="authService.SignUp(userEmail.value, userPwd.value, userdisplayName.value)"  >Sign Up</button>
+     (click)="authService.SignUp(userEmail.value, userPwd.value, userdisplayName.value)" >Sign Up</button>
     </div>
     <span class="center margin-top">New to our platform? <a class="sign-up-link" routerLink="/login">Login!</a></span> 
   </div>
