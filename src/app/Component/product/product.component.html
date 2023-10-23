@@ -9,7 +9,7 @@
           height="30"
           class="profile-image-toolbar"
         /> 
-        {{user.displayName }}
+        {{user.displayName}}
         <mat-icon>expand_more</mat-icon>
       </button>
     </ng-container>
@@ -50,7 +50,7 @@
           <mat-card class="card" *ngFor="let product of products; index as i">
             <mat-card-title>{{product.name}}</mat-card-title>
             <img mat-card-image [src]="product.imgUrl" height="200px" alt="Product img"> 
-            <mat-card-title>Price: {{ product.price}}</mat-card-title>
+            <mat-card-title>Price: {{product.price}}</mat-card-title>
             <mat-card-subtitle>{{product.subtitle}}</mat-card-subtitle>
             <button class="p-2 btn btn-primary" (click)="addToCart(i)" *ngIf="add !== i">Add to Cart</button>
             <div *ngIf="add === i">
