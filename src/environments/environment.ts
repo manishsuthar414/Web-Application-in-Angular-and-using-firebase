@@ -2,6 +2,8 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 // This is connect with Google firebase using cloub base
+// This is I add firebase environment external firebase 
+
 
 export const environment = {
   firebase: {
