@@ -1,12 +1,12 @@
 export interface ProfileUser {
-    uid: string;
-    email: string;
+    uid: any;
+    email: email;
     firstName: string;
     lastName: string;
     displayName: string;
-    phoneNumber: string;
+    phoneNumber: number;
     address: string;
-    photoURL: string;
+    photoURL: any;
 }  
 export interface User {
     uid: string;
