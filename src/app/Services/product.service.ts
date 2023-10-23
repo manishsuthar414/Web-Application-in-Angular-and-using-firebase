@@ -11,6 +11,9 @@ export class ProductService {
   
 
   constructor(private firestore:AngularFirestore, private http:HttpClient) { }
+
+// fetch all the products in the database in // firebase and collection products 
+
   getAllProducts() {
     return this.firestore.collection('products').snapshotChanges()
   }
