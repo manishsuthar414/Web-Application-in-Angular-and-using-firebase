@@ -9,7 +9,7 @@ export interface ProfileUser {
     photoURL: any;
 }  
 export interface User {
-    uid: string;
+    uid: any;
     email: string;
     displayName: string;
     photoURL: string;
