@@ -15,9 +15,9 @@ export class AuthService {
   user!: Observable<Firestore>;
   userid: any;
 
-//   // SaveUser(product: any){
-//   //   return this.http.post<any>('https://webapp-3dd28-default-rtdb.firebaseio.com/product.json',product)
-//   // }
+// SaveUser(product: any){
+// return this.http.post<any>('https://webapp-3dd28-default-rtdb.firebaseio.com/product.json',product)
+// }
 
   createUserWithEmailAndPassword(value: any) {
     throw new Error('Method not implemented.');
