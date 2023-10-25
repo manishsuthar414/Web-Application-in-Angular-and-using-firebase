@@ -119,13 +119,13 @@ export class AuthService {
 //    .then((result) => {
 //     this.ngZone.run(() => {
 //      this.router.navigate(['/home']);
-//   //       });
-//   //       this.SetUserData(result.user);
-//   //     })
-//   //     .catch((error) => {
-//   //       window.alert(error);
-//   //     });
-//   // }
+//     });
+//     this.SetUserData(result.user);
+//    })
+//   .catch((error) => {
+//    window.alert(error);
+//   });
+//  }
 
   SetUserData(user: any) {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(
@@ -158,6 +158,6 @@ export class AuthService {
 
 
 
-// // function resolve(SetUserData: (user: any) => Promise<void>) {
-// //   throw new Error('Function not implemented.');
+//function resolve(SetUserData: (user: any) => Promise<void>) {
+//throw new Error('Function not implemented.');
  }
