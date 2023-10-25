@@ -6,6 +6,8 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+
+// this authguard are route can verify 
 export class AuthGuardService {
 
   constructor(private authSer:AuthService, private router:Router) { }
